@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            EarabView()
+                .tabItem {
+                    Label("إعراب", systemImage: "book.fill")
+                }
+
+            SarfView()
+                .tabItem {
+                    Label("صرف", systemImage: "character.book.closed.fill")
+                }
         }
-        .padding()
+        .accentColor(Theme.primaryColor)
     }
 }
 
