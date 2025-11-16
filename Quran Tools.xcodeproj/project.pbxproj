@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		54F73E5F2EC9F2E600FB0190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F73E492EC9F2E500FB0190 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F73E502EC9F2E500FB0190;
+			remoteInfo = "Quran Tools";
+		};
+		54F73E692EC9F2E600FB0190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54F73E492EC9F2E500FB0190 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F73E502EC9F2E500FB0190;
+			remoteInfo = "Quran Tools";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		54F73E512EC9F2E500FB0190 /* Quran Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quran Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F73E5E2EC9F2E600FB0190 /* Quran ToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quran ToolsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F73E682EC9F2E600FB0190 /* Quran ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quran ToolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		54F73E532EC9F2E500FB0190 /* Quran Tools */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Quran Tools";
+			sourceTree = "<group>";
+		};
+		54F73E612EC9F2E600FB0190 /* Quran ToolsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Quran ToolsTests";
+			sourceTree = "<group>";
+		};
+		54F73E6B2EC9F2E600FB0190 /* Quran ToolsUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Quran ToolsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		54F73E4E2EC9F2E500FB0190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E5B2EC9F2E600FB0190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E652EC9F2E600FB0190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		54F73E482EC9F2E500FB0190 = {
+			isa = PBXGroup;
+			children = (
+				54F73E532EC9F2E500FB0190 /* Quran Tools */,
+				54F73E612EC9F2E600FB0190 /* Quran ToolsTests */,
+				54F73E6B2EC9F2E600FB0190 /* Quran ToolsUITests */,
+				54F73E522EC9F2E500FB0190 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		54F73E522EC9F2E500FB0190 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54F73E512EC9F2E500FB0190 /* Quran Tools.app */,
+				54F73E5E2EC9F2E600FB0190 /* Quran ToolsTests.xctest */,
+				54F73E682EC9F2E600FB0190 /* Quran ToolsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54F73E502EC9F2E500FB0190 /* Quran Tools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F73E722EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran Tools" */;
+			buildPhases = (
+				54F73E4D2EC9F2E500FB0190 /* Sources */,
+				54F73E4E2EC9F2E500FB0190 /* Frameworks */,
+				54F73E4F2EC9F2E500FB0190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				54F73E532EC9F2E500FB0190 /* Quran Tools */,
+			);
+			name = "Quran Tools";
+			packageProductDependencies = (
+			);
+			productName = "Quran Tools";
+			productReference = 54F73E512EC9F2E500FB0190 /* Quran Tools.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54F73E5D2EC9F2E600FB0190 /* Quran ToolsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F73E752EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran ToolsTests" */;
+			buildPhases = (
+				54F73E5A2EC9F2E600FB0190 /* Sources */,
+				54F73E5B2EC9F2E600FB0190 /* Frameworks */,
+				54F73E5C2EC9F2E600FB0190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F73E602EC9F2E600FB0190 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				54F73E612EC9F2E600FB0190 /* Quran ToolsTests */,
+			);
+			name = "Quran ToolsTests";
+			packageProductDependencies = (
+			);
+			productName = "Quran ToolsTests";
+			productReference = 54F73E5E2EC9F2E600FB0190 /* Quran ToolsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		54F73E672EC9F2E600FB0190 /* Quran ToolsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54F73E782EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran ToolsUITests" */;
+			buildPhases = (
+				54F73E642EC9F2E600FB0190 /* Sources */,
+				54F73E652EC9F2E600FB0190 /* Frameworks */,
+				54F73E662EC9F2E600FB0190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54F73E6A2EC9F2E600FB0190 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				54F73E6B2EC9F2E600FB0190 /* Quran ToolsUITests */,
+			);
+			name = "Quran ToolsUITests";
+			packageProductDependencies = (
+			);
+			productName = "Quran ToolsUITests";
+			productReference = 54F73E682EC9F2E600FB0190 /* Quran ToolsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54F73E492EC9F2E500FB0190 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					54F73E502EC9F2E500FB0190 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					54F73E5D2EC9F2E600FB0190 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 54F73E502EC9F2E500FB0190;
+					};
+					54F73E672EC9F2E600FB0190 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 54F73E502EC9F2E500FB0190;
+					};
+				};
+			};
+			buildConfigurationList = 54F73E4C2EC9F2E500FB0190 /* Build configuration list for PBXProject "Quran Tools" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 54F73E482EC9F2E500FB0190;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 54F73E522EC9F2E500FB0190 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				54F73E502EC9F2E500FB0190 /* Quran Tools */,
+				54F73E5D2EC9F2E600FB0190 /* Quran ToolsTests */,
+				54F73E672EC9F2E600FB0190 /* Quran ToolsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		54F73E4F2EC9F2E500FB0190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E5C2EC9F2E600FB0190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E662EC9F2E600FB0190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54F73E4D2EC9F2E500FB0190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E5A2EC9F2E600FB0190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F73E642EC9F2E600FB0190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54F73E602EC9F2E600FB0190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F73E502EC9F2E500FB0190 /* Quran Tools */;
+			targetProxy = 54F73E5F2EC9F2E600FB0190 /* PBXContainerItemProxy */;
+		};
+		54F73E6A2EC9F2E600FB0190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54F73E502EC9F2E500FB0190 /* Quran Tools */;
+			targetProxy = 54F73E692EC9F2E600FB0190 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		54F73E702EC9F2E600FB0190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		54F73E712EC9F2E600FB0190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		54F73E732EC9F2E600FB0190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-Tools";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		54F73E742EC9F2E600FB0190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-Tools";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		54F73E762EC9F2E600FB0190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-ToolsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quran Tools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Quran Tools";
+			};
+			name = Debug;
+		};
+		54F73E772EC9F2E600FB0190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-ToolsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quran Tools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Quran Tools";
+			};
+			name = Release;
+		};
+		54F73E792EC9F2E600FB0190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-ToolsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Quran Tools";
+			};
+			name = Debug;
+		};
+		54F73E7A2EC9F2E600FB0190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2VR7RJAKY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "masna.ai.Quran-ToolsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Quran Tools";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		54F73E4C2EC9F2E500FB0190 /* Build configuration list for PBXProject "Quran Tools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F73E702EC9F2E600FB0190 /* Debug */,
+				54F73E712EC9F2E600FB0190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F73E722EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran Tools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F73E732EC9F2E600FB0190 /* Debug */,
+				54F73E742EC9F2E600FB0190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F73E752EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran ToolsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F73E762EC9F2E600FB0190 /* Debug */,
+				54F73E772EC9F2E600FB0190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54F73E782EC9F2E600FB0190 /* Build configuration list for PBXNativeTarget "Quran ToolsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54F73E792EC9F2E600FB0190 /* Debug */,
+				54F73E7A2EC9F2E600FB0190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54F73E492EC9F2E500FB0190 /* Project object */;
+}
