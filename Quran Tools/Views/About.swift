@@ -9,10 +9,15 @@ import SwiftUI
 
 struct AboutView: View {
     @Environment(\.openURL) var openURL
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+    private var isIPad: Bool {
+        horizontalSizeClass == .regular
+    }
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            VStack(spacing: isIPad ? 28 : 24) {
                 // Header Section
                 VStack(spacing: 12) {
                     Image(systemName: "book.pages.fill")
@@ -33,68 +38,24 @@ struct AboutView: View {
                 }
                 .padding(.bottom, 8)
 
-                // Features Section
-                SectionCard(
-                    icon: "star.fill",
-                    iconColor: Theme.accentAmber,
-                    title: "Features"
-                ) {
-                    FeatureRow(icon: "text.magnifyingglass", text: "Detailed grammatical breakdowns of Quranic verses")
-                    FeatureRow(icon: "character.book.closed", text: "Morphological word analysis with roots and forms")
-                    FeatureRow(icon: "iphone", text: "Mobile-optimized for iOS devices")
-                    FeatureRow(icon: "lock.shield.fill", text: "Runs entirely on your device - no data transmission")
-                }
-
-                // Data Sources Section
-                SectionCard(
-                    icon: "server.rack",
-                    iconColor: Theme.primaryColor,
-                    title: "Data Sources"
-                ) {
-                    DataSourceRow(name: "Surah Quran", description: "Grammatical analysis of Quranic verses")
-                    DataSourceRow(name: "Quran API", description: "English and Urdu translations")
-                    DataSourceRow(name: "AraTools", description: "Morphological analysis with roots and forms")
-                }
-
-                // Privacy Section
-                SectionCard(
-                    icon: "hand.raised.fill",
-                    iconColor: Theme.successColor,
-                    title: "Privacy & Data"
-                ) {
-                    Text("This application runs entirely in your browser and does not collect, store, or transmit any personal data.")
-                        .font(Theme.bodyFont)
-                        .foregroundColor(Theme.textColor)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text("Please review third-party privacy policies for their data handling practices.")
-                        .font(Theme.smallFont)
-                        .foregroundColor(Theme.textSecondary)
-                        .padding(.top, 8)
-                }
-
-                // Disclaimer Section
-                SectionCard(
-                    icon: "info.circle.fill",
-                    iconColor: Theme.accentColor,
-                    title: "Disclaimer"
-                ) {
-                    Text("This tool helps students study Arabic grammar using Quranic verses. Content originates from third-party sources, with no ownership claims over religious texts or grammatical materials.")
-                        .font(Theme.bodyFont)
-                        .foregroundColor(Theme.textColor)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                // Copyright Section
-                SectionCard(
-                    icon: "c.circle.fill",
-                    iconColor: Theme.textSecondary,
-                    title: "Copyright"
-                ) {
-                    Text("Rights remain with original sources. This application functions as an educational interface without claiming content ownership.")
-                        .font(Theme.bodyFont)
-                        .foregroundColor(Theme.textColor)
-                        .fixedSize(horizontal: false, vertical: true)
+                // iPad: Use Grid Layout, iPhone: Stack Layout
+                if isIPad {
+                    // Two-column grid for iPad
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                        featureCard
+                        dataSourcesCard
+                        privacyCard
+                        disclaimerCard
+                        copyrightCard
+                        Color.clear.frame(height: 1) // Placeholder for odd number of items
+                    }
+                } else {
+                    // Single column for iPhone
+                    featureCard
+                    dataSourcesCard
+                    privacyCard
+                    disclaimerCard
+                    copyrightCard
                 }
 
                 // Contact Section
@@ -127,9 +88,79 @@ struct AboutView: View {
                     .padding(.top, 8)
                     .padding(.bottom, 20)
             }
-            .padding(.horizontal)
+            .padding(.horizontal, isIPad ? 32 : 16)
         }
         .background(Theme.backgroundColor)
+    }
+
+    // MARK: - Card Views
+    private var featureCard: some View {
+        SectionCard(
+            icon: "star.fill",
+            iconColor: Theme.accentAmber,
+            title: "Features"
+        ) {
+            FeatureRow(icon: "text.magnifyingglass", text: "Detailed grammatical breakdowns of Quranic verses")
+            FeatureRow(icon: "character.book.closed", text: "Morphological word analysis with roots and forms")
+            FeatureRow(icon: Theme.isIPad ? "ipad" : "iphone", text: "Optimized for iPhone & iPad")
+            FeatureRow(icon: "lock.shield.fill", text: "Runs entirely on your device - no data transmission")
+        }
+    }
+
+    private var dataSourcesCard: some View {
+        SectionCard(
+            icon: "server.rack",
+            iconColor: Theme.primaryColor,
+            title: "Data Sources"
+        ) {
+            DataSourceRow(name: "Surah Quran", description: "Grammatical analysis of Quranic verses")
+            DataSourceRow(name: "Quran API", description: "English and Urdu translations")
+            DataSourceRow(name: "AraTools", description: "Morphological analysis with roots and forms")
+        }
+    }
+
+    private var privacyCard: some View {
+        SectionCard(
+            icon: "hand.raised.fill",
+            iconColor: Theme.successColor,
+            title: "Privacy & Data"
+        ) {
+            Text("This application runs entirely on your device and does not collect, store, or transmit any personal data.")
+                .font(Theme.bodyFont)
+                .foregroundColor(Theme.textColor)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Text("Please review third-party privacy policies for their data handling practices.")
+                .font(Theme.smallFont)
+                .foregroundColor(Theme.textSecondary)
+                .padding(.top, 8)
+        }
+    }
+
+    private var disclaimerCard: some View {
+        SectionCard(
+            icon: "info.circle.fill",
+            iconColor: Theme.accentColor,
+            title: "Disclaimer"
+        ) {
+            Text("This tool helps students study Arabic grammar using Quranic verses. Content originates from third-party sources, with no ownership claims over religious texts or grammatical materials.")
+                .font(Theme.bodyFont)
+                .foregroundColor(Theme.textColor)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var copyrightCard: some View {
+        SectionCard(
+            icon: "c.circle.fill",
+            iconColor: Theme.textSecondary,
+            title: "Copyright"
+        ) {
+            Text("Rights remain with original sources. This application functions as an educational interface without claiming content ownership.")
+                .font(Theme.bodyFont)
+                .foregroundColor(Theme.textColor)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 }
 

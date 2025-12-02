@@ -10,10 +10,28 @@ import SwiftUI
 struct SarfView: View {
     @StateObject private var viewModel = SarfViewModel()
     @FocusState private var isTextFieldFocused: Bool
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+    private var isIPad: Bool {
+        horizontalSizeClass == .regular
+    }
 
     var body: some View {
-        NavigationView {
-            ZStack {
+        Group {
+            if isIPad {
+                // iPad: No NavigationView (handled by sidebar)
+                contentView
+            } else {
+                // iPhone: Use NavigationView
+                NavigationView {
+                    contentView
+                }
+            }
+        }
+    }
+
+    private var contentView: some View {
+        ZStack {
                 Theme.backgroundColor.ignoresSafeArea()
 
                 ScrollView {
@@ -55,7 +73,6 @@ struct SarfView: View {
                     .fontWeight(.semibold)
                 }
             }
-        }
     }
 
     // MARK: - Header Section

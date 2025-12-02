@@ -32,14 +32,24 @@ struct Theme {
     static let textSecondary = Color(hex: "64748B")       // Slate 500
     static let textTertiary = Color(hex: "94A3B8")        // Slate 400
 
-    // Typography
-    static let titleFont = Font.system(size: 28, weight: .bold)
-    static let headingFont = Font.system(size: 20, weight: .semibold)
-    static let bodyFont = Font.system(size: 16, weight: .regular)
-    static let arabicFont = Font.system(size: 20, weight: .medium)
-    static let arabicLargeFont = Font.system(size: 24, weight: .semibold)
-    static let earabContentFont = Font.system(size: 17, weight: .regular)
-    static let smallFont = Font.system(size: 14, weight: .regular)
+    // Typography - Adaptive for iPhone and iPad
+    static let titleFont = Font.system(size: isIPad ? 36 : 28, weight: .bold)
+    static let headingFont = Font.system(size: isIPad ? 24 : 20, weight: .semibold)
+    static let bodyFont = Font.system(size: isIPad ? 18 : 16, weight: .regular)
+    static let arabicFont = Font.system(size: isIPad ? 24 : 20, weight: .medium)
+    static let arabicLargeFont = Font.system(size: isIPad ? 28 : 24, weight: .semibold)
+    static let earabContentFont = Font.system(size: isIPad ? 19 : 17, weight: .regular)
+    static let smallFont = Font.system(size: isIPad ? 16 : 14, weight: .regular)
+
+    // Device Detection
+    static var isIPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+
+    // Adaptive Spacing
+    static let cardPadding: CGFloat = isIPad ? 24 : 20
+    static let contentPadding: CGFloat = isIPad ? 24 : 16
+    static let sectionSpacing: CGFloat = isIPad ? 28 : 24
 
     // Gradients
     static let primaryGradient = LinearGradient(
