@@ -36,11 +36,16 @@ struct EarabView: View {
 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Header
-                        headerSection
+                        // Header removed for cleaner UI
+                        // headerSection
 
-                        // Info Box
-                        infoBox
+                        // Feature Summary
+                        Text("Understand the grammatical structure and syntax of Quranic verses to gain deeper insights into their meaning.")
+                            .font(Theme.bodyFont)
+                            .foregroundColor(Theme.textSecondary)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 8)
 
                         // Form Section
                         formSection
@@ -61,12 +66,12 @@ struct EarabView: View {
                     isAyahFieldFocused = false
                 }
             }
-            .navigationTitle("إعراب القرآن")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Quran Analysis")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button("تم") {
+                    Button("Done") {
                         isAyahFieldFocused = false
                     }
                     .foregroundColor(Theme.primaryColor)
@@ -75,30 +80,11 @@ struct EarabView: View {
             }
     }
 
-    // MARK: - Header Section
-    private var headerSection: some View {
-        VStack(spacing: 8) {
-            Text("إعراب القرآن")
-                .font(Theme.titleFont)
-                .foregroundColor(Theme.primaryColor)
-                .environment(\.layoutDirection, .rightToLeft)
+    // MARK: - Header Section (Removed)
+    // private var headerSection: some View { ... }
 
-            Text("Quran E'arab Learning")
-                .font(Theme.bodyFont)
-                .foregroundColor(Theme.secondaryColor.opacity(0.7))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.top, 8)
-    }
-
-    // MARK: - Info Box
-    private var infoBox: some View {
-        InfoBanner(
-            title: "كيفية الاستخدام:",
-            message: "اختر السورة ورقم الآية للحصول على الإعراب التفصيلي"
-        )
-        .environment(\.layoutDirection, .rightToLeft)
-    }
+    // MARK: - Info Box (Removed)
+    // private var infoBox: some View { ... }
 
     // MARK: - Form Section
     private var formSection: some View {
@@ -106,19 +92,18 @@ struct EarabView: View {
             // Surah Picker
             VStack(alignment: .leading, spacing: 10) {
                 Label {
-                    Text("اختر السورة")
+                    Text("Select Surah")
                         .font(Theme.bodyFont)
                         .fontWeight(.semibold)
                 } icon: {
                     Image(systemName: "book.closed.fill")
                         .foregroundColor(Theme.primaryColor)
                 }
-                .environment(\.layoutDirection, .rightToLeft)
 
                 if viewModel.surahs.isEmpty {
                     HStack {
                         ProgressView()
-                        Text("جاري تحميل السور...")
+                        Text("Loading Surahs...")
                             .font(Theme.bodyFont)
                             .foregroundColor(.gray)
                     }
@@ -128,8 +113,8 @@ struct EarabView: View {
                     .cornerRadius(10)
                 } else {
                     Menu {
-                        Picker("السورة", selection: $viewModel.selectedSurah) {
-                            Text("اختر سورة").tag(nil as Surah?)
+                        Picker("Surah", selection: $viewModel.selectedSurah) {
+                            Text("Select a Surah").tag(nil as Surah?)
                             ForEach(viewModel.surahs) { surah in
                                 Text("\(surah.number). \(surah.name) - \(surah.englishName)")
                                     .tag(surah as Surah?)
@@ -141,7 +126,7 @@ struct EarabView: View {
                                 Text("\(surah.number). \(surah.name) - \(surah.englishName)")
                                     .foregroundColor(Theme.textColor)
                             } else {
-                                Text("اختر سورة")
+                                Text("Select a Surah")
                                     .foregroundColor(.gray)
                             }
                             Spacer()
@@ -166,14 +151,13 @@ struct EarabView: View {
             // Ayah Input
             VStack(alignment: .leading, spacing: 10) {
                 Label {
-                    Text("رقم الآية")
+                    Text("Ayah Number")
                         .font(Theme.bodyFont)
                         .fontWeight(.semibold)
                 } icon: {
                     Image(systemName: "number")
                         .foregroundColor(Theme.primaryColor)
                 }
-                .environment(\.layoutDirection, .rightToLeft)
 
                 TextField("1", value: $viewModel.currentAyah, format: .number)
                     .keyboardType(.numberPad)
@@ -193,16 +177,15 @@ struct EarabView: View {
                     .disabled(viewModel.selectedSurah == nil)
 
                 if let surah = viewModel.selectedSurah {
-                    Text("من 1 إلى \(surah.numberOfAyahs)")
+                    Text("From 1 to \(surah.numberOfAyahs)")
                         .font(Theme.smallFont)
                         .foregroundColor(.gray)
-                        .environment(\.layoutDirection, .rightToLeft)
                 }
             }
 
             // Submit Button
             GradientButton(
-                title: "عرض الإعراب",
+                title: "Analyze",
                 icon: "arrow.right.circle.fill",
                 action: {
                     isAyahFieldFocused = false
@@ -213,7 +196,6 @@ struct EarabView: View {
                 isLoading: viewModel.isLoading,
                 isDisabled: viewModel.selectedSurah == nil
             )
-            .environment(\.layoutDirection, .rightToLeft)
         }
         .padding(20)
         .background(Color.white)
@@ -233,7 +215,7 @@ struct EarabView: View {
             }
 
             // Source Link
-            sourceLinkButton
+//            sourceLinkButton
         }
     }
 
@@ -244,9 +226,9 @@ struct EarabView: View {
                 viewModel.navigateAyah(direction: -1)
             }) {
                 HStack(spacing: 8) {
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "chevron.left")
                         .font(.system(size: 14, weight: .bold))
-                    Text("السابق")
+                    Text("Previous")
                         .font(Theme.bodyFont)
                         .fontWeight(.semibold)
                 }
@@ -263,10 +245,10 @@ struct EarabView: View {
                 viewModel.navigateAyah(direction: 1)
             }) {
                 HStack(spacing: 8) {
-                    Text("التالي")
+                    Text("Next")
                         .font(Theme.bodyFont)
                         .fontWeight(.semibold)
-                    Image(systemName: "chevron.left")
+                    Image(systemName: "chevron.right")
                         .font(.system(size: 14, weight: .bold))
                 }
                 .padding(.vertical, 12)
@@ -278,7 +260,6 @@ struct EarabView: View {
             }
             .disabled(!viewModel.canNavigateNext())
         }
-        .environment(\.layoutDirection, .rightToLeft)
     }
 
     // MARK: - E'arab Content View
@@ -292,18 +273,17 @@ struct EarabView: View {
                         .font(Theme.headingFont)
                         .foregroundColor(Theme.secondaryColor)
                 }
-                .environment(\.layoutDirection, .rightToLeft)
             }
 
             ForEach(Array(viewModel.earabCards.enumerated()), id: \.offset) { _, card in
                 VStack(alignment: .leading, spacing: 12) {
                     Text(card)
                         .font(Theme.earabContentFont)
-                        .lineSpacing(6)
+                        .lineSpacing(10) // Increased line spacing for readability
                         .foregroundColor(Theme.textColor)
-                        .environment(\.layoutDirection, .rightToLeft)
+                        .environment(\.layoutDirection, .rightToLeft) // Keep Arabic text RTL
                 }
-                .padding()
+                .padding(16) // Reduced inner padding to maximize text width
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.white)
                 .cornerRadius(12)
@@ -320,7 +300,7 @@ struct EarabView: View {
                 )
             }
         }
-        .padding(16)
+        .padding(12) // Reduced outer padding
         .background(
             LinearGradient(
                 colors: [Color.gray.opacity(0.05), Color.gray.opacity(0.02)],
@@ -340,7 +320,7 @@ struct EarabView: View {
         }) {
             HStack {
                 Image(systemName: "link.circle.fill")
-                Text("عرض الصفحة الأصلية")
+                Text("View Original Source")
                     .fontWeight(.medium)
             }
             .font(Theme.bodyFont)
@@ -350,7 +330,6 @@ struct EarabView: View {
             .foregroundColor(.white)
             .cornerRadius(12)
         }
-        .environment(\.layoutDirection, .rightToLeft)
     }
 
     // MARK: - Error View
@@ -371,7 +350,6 @@ struct EarabView: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Theme.errorColor.opacity(0.3), lineWidth: 1)
         )
-        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

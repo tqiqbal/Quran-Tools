@@ -47,13 +47,13 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             EarabView()
                 .tabItem {
-                    Label("إعراب", systemImage: "book.fill")
+                    Label("Analysis", systemImage: "book.fill")
                 }
                 .tag(Tab.earab)
 
             SarfView()
                 .tabItem {
-                    Label("صرف", systemImage: "character.book.closed.fill")
+                    Label("Morphology", systemImage: "character.book.closed.fill")
                 }
                 .tag(Tab.sarf)
 
@@ -128,8 +128,8 @@ struct ContentView: View {
                     // Navigation Items
                     VStack(spacing: 8) {
                         SidebarButton(
-                            title: "إعراب القرآن",
-                            subtitle: "Quran E'arab",
+                            title: "Quran Analysis",
+                            subtitle: "Grammar & Syntax",
                             icon: "book.fill",
                             iconColor: Theme.primaryColor,
                             isSelected: selectedTab == .earab
@@ -138,8 +138,8 @@ struct ContentView: View {
                         }
 
                         SidebarButton(
-                            title: "تحليل الصرف",
-                            subtitle: "Morphology",
+                            title: "Morphology",
+                            subtitle: "Word Analysis",
                             icon: "character.book.closed.fill",
                             iconColor: Theme.accentColor,
                             isSelected: selectedTab == .sarf

@@ -80,14 +80,14 @@ struct GradientButton: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 10) {
+            HStack(spacing: 12) {
                 if isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .scaleEffect(0.9)
                 } else {
                     Image(systemName: icon)
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.system(size: 18, weight: .semibold))
                 }
 
                 Text(title)
@@ -95,7 +95,7 @@ struct GradientButton: View {
                     .fontWeight(.bold)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
+            .padding(.vertical, 18)
             .padding(.horizontal, 24)
             .background(
                 Group {
@@ -111,15 +111,21 @@ struct GradientButton: View {
                 }
             )
             .foregroundColor(.white)
-            .cornerRadius(14)
+            .cornerRadius(20) // Smoother corners
             .shadow(
-                color: isDisabled ? .clear : Theme.softShadow(),
-                radius: 16,
+                color: isDisabled ? .clear : Theme.primaryColor.opacity(0.3),
+                radius: 12, // Softer shadow
                 x: 0,
-                y: 8
+                y: 6
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
             )
         }
         .disabled(isDisabled || isLoading)
+        .scaleEffect(isLoading ? 0.98 : 1)
+        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isLoading)
     }
 }
 

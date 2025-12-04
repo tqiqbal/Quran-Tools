@@ -9,8 +9,8 @@ import SwiftUI
 
 struct Theme {
     // Fresh Green/Teal Color Palette
-    static let primaryColor = Color(hex: "10B981")        // Emerald
-    static let primaryLight = Color(hex: "34D399")        // Light Emerald
+    static let primaryColor = Color(hex: "059669")        // Emerald
+    static let primaryLight = Color(hex: "047857")        // Light Emerald
     static let primaryDark = Color(hex: "059669")         // Deep Emerald
 
     static let secondaryColor = Color(hex: "0F172A")      // Slate 900
@@ -20,7 +20,7 @@ struct Theme {
     static let accentGreen = Color(hex: "22C55E")         // Green
     static let accentAmber = Color(hex: "F59E0B")         // Amber
 
-    static let backgroundColor = Color(hex: "F0FDF4")     // Green 50
+    static let backgroundColor = Color(hex: "f6f9f7")     // Green 50
     static let cardBackground = Color.white
     static let surfaceColor = Color(hex: "DCFCE7")        // Green 100
 
@@ -47,9 +47,10 @@ struct Theme {
     }
 
     // Adaptive Spacing
-    static let cardPadding: CGFloat = isIPad ? 24 : 20
-    static let contentPadding: CGFloat = isIPad ? 24 : 16
-    static let sectionSpacing: CGFloat = isIPad ? 28 : 24
+    // Adaptive Spacing - Increased for spacious look
+    static let cardPadding: CGFloat = isIPad ? 32 : 24
+    static let contentPadding: CGFloat = isIPad ? 32 : 20
+    static let sectionSpacing: CGFloat = isIPad ? 40 : 32
 
     // Gradients
     static let primaryGradient = LinearGradient(

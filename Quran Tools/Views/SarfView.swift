@@ -36,11 +36,16 @@ struct SarfView: View {
 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Header
-                        headerSection
+                        // Header removed for cleaner UI
+                        // headerSection
 
-                        // Info Box
-                        infoBox
+                        // Feature Summary
+                        Text("Analyze the internal structure, roots, and patterns of Arabic words to understand their derivation and nuances.")
+                            .font(Theme.bodyFont)
+                            .foregroundColor(Theme.textSecondary)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 8)
 
                         // Search Form
                         searchForm
@@ -61,12 +66,12 @@ struct SarfView: View {
                     isTextFieldFocused = false
                 }
             }
-            .navigationTitle("تحليل الصرف")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Morphology Analysis")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button("تم") {
+                    Button("Done") {
                         isTextFieldFocused = false
                     }
                     .foregroundColor(Theme.primaryColor)
@@ -75,46 +80,26 @@ struct SarfView: View {
             }
     }
 
-    // MARK: - Header Section
-    private var headerSection: some View {
-        VStack(spacing: 8) {
-            Text("تحليل الصرف")
-                .font(Theme.titleFont)
-                .foregroundColor(Theme.primaryColor)
-                .environment(\.layoutDirection, .rightToLeft)
+    // MARK: - Header Section (Removed)
+    // private var headerSection: some View { ... }
 
-            Text("Arabic Morphology Analysis")
-                .font(Theme.bodyFont)
-                .foregroundColor(Theme.secondaryColor.opacity(0.7))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.top, 8)
-    }
-
-    // MARK: - Info Box
-    private var infoBox: some View {
-        InfoBanner(
-            title: "كيفية الاستخدام:",
-            message: "أدخل كلمة عربية لتحليلها صرفياً - مثال: رددنا"
-        )
-        .environment(\.layoutDirection, .rightToLeft)
-    }
+    // MARK: - Info Box (Removed)
+    // private var infoBox: some View { ... }
 
     // MARK: - Search Form
     private var searchForm: some View {
         VStack(spacing: 20) {
             VStack(alignment: .leading, spacing: 10) {
                 Label {
-                    Text("الكلمة العربية")
+                    Text("Arabic Word")
                         .font(Theme.bodyFont)
                         .fontWeight(.semibold)
                 } icon: {
                     Image(systemName: "character.cursor.ibeam")
                         .foregroundColor(Theme.primaryColor)
                 }
-                .environment(\.layoutDirection, .rightToLeft)
 
-                TextField("مثال: رددنا", text: $viewModel.searchWord)
+                TextField("Example: رددنا", text: $viewModel.searchWord)
                     .font(Theme.arabicLargeFont)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -139,7 +124,7 @@ struct SarfView: View {
             }
 
             GradientButton(
-                title: "تحليل",
+                title: "Analyze",
                 icon: "magnifyingglass.circle.fill",
                 action: {
                     isTextFieldFocused = false
@@ -150,7 +135,6 @@ struct SarfView: View {
                 isLoading: viewModel.isLoading,
                 isDisabled: viewModel.searchWord.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             )
-            .environment(\.layoutDirection, .rightToLeft)
         }
         .padding(20)
         .background(Color.white)
@@ -162,21 +146,19 @@ struct SarfView: View {
     private var resultsSection: some View {
         VStack(spacing: 16) {
             HStack {
-                Image(systemName: "text.magnifyingglass")
-                    .foregroundColor(Theme.primaryColor)
-                Text("نتائج التحليل")
+                Text("Analysis Results")
                     .font(Theme.headingFont)
                     .foregroundColor(Theme.secondaryColor)
+                Spacer()
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .environment(\.layoutDirection, .rightToLeft)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             if viewModel.morphologyResults.isEmpty {
                 VStack(spacing: 12) {
                     Image(systemName: "questionmark.circle")
                         .font(.system(size: 40))
                         .foregroundColor(.gray.opacity(0.5))
-                    Text("لم يتم العثور على نتائج")
+                    Text("No results found")
                         .font(Theme.bodyFont)
                         .foregroundColor(.gray)
                 }
@@ -184,7 +166,6 @@ struct SarfView: View {
                 .padding(40)
                 .background(Color.white)
                 .cornerRadius(12)
-                .environment(\.layoutDirection, .rightToLeft)
             } else {
                 ForEach(viewModel.morphologyResults) { word in
                     morphologyCard(word)
@@ -204,7 +185,7 @@ struct SarfView: View {
                     .foregroundColor(Theme.primaryColor)
                 Spacer()
             }
-            .padding()
+            .padding(20)
             .background(
                 LinearGradient(
                     colors: [Theme.primaryColor.opacity(0.1), Theme.primaryColor.opacity(0.05)],
@@ -213,7 +194,6 @@ struct SarfView: View {
                 )
             )
             .cornerRadius(10)
-            .environment(\.layoutDirection, .rightToLeft)
 
             Divider()
 
@@ -221,7 +201,7 @@ struct SarfView: View {
             VStack(spacing: 12) {
                 morphologyRow(
                     icon: "text.book.closed",
-                    label: "المعنى",
+                    label: "Meaning",
                     value: word.niceGloss ?? word.gloss,
                     isArabic: false
                 )
@@ -230,7 +210,7 @@ struct SarfView: View {
 
                 morphologyRow(
                     icon: "tag.fill",
-                    label: "نوع الكلمة",
+                    label: "Part of Speech",
                     value: word.posNice,
                     isArabic: false
                 )
@@ -239,7 +219,7 @@ struct SarfView: View {
 
                 morphologyRow(
                     icon: "leaf.fill",
-                    label: "الجذر",
+                    label: "Root",
                     value: word.root,
                     isArabic: true
                 )
@@ -248,14 +228,14 @@ struct SarfView: View {
                     Divider()
                     morphologyRow(
                         icon: "scalemass.fill",
-                        label: "الوزن",
+                        label: "Measure",
                         value: measure,
                         isArabic: false
                     )
                 }
             }
         }
-        .padding(20)
+        .padding(24) // Increased padding for spacious look
         .background(Color.white)
         .cornerRadius(16)
         .overlay(
@@ -287,7 +267,6 @@ struct SarfView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .environment(\.layoutDirection, isArabic ? .rightToLeft : .leftToRight)
         }
-        .environment(\.layoutDirection, .rightToLeft)
     }
 
     // MARK: - Error View
@@ -308,7 +287,6 @@ struct SarfView: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Theme.errorColor.opacity(0.3), lineWidth: 1)
         )
-        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

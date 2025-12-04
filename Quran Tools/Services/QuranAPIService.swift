@@ -14,9 +14,23 @@ class QuranAPIService {
 
     // MARK: - Fetch Surahs
     func fetchSurahs() async throws -> [Surah] {
+        let cacheKey = "cached_surahs_data"
+        
+        // Check cache first
+        if let cachedData = UserDefaults.standard.data(forKey: cacheKey) {
+            if let response = try? JSONDecoder().decode(SurahListResponse.self, from: cachedData) {
+                return response.data
+            }
+        }
+        
+        // Fetch from network if not cached
         let url = URL(string: "https://api.alquran.cloud/v1/surah")!
 
         let (data, _) = try await URLSession.shared.data(from: url)
+        
+        // Cache the response data
+        UserDefaults.standard.set(data, forKey: cacheKey)
+        
         let response = try JSONDecoder().decode(SurahListResponse.self, from: data)
         return response.data
     }
