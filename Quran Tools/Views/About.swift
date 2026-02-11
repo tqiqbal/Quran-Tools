@@ -25,12 +25,12 @@ struct AboutView: View {
                         .foregroundStyle(Theme.primaryGradient)
                         .padding(.top, 20)
 
-                    Text("Quran E'arab & Sarf")
+                    Text("About Quran Grammar")
                         .font(Theme.titleFont)
                         .foregroundColor(Theme.primaryColor)
                         .multilineTextAlignment(.center)
 
-                    Text("Educational tool for learning Arabic grammar through Quranic text analysis")
+                    Text("Learn Arabic grammar through Quranic text analysis and morphology")
                         .font(Theme.bodyFont)
                         .foregroundColor(Theme.textSecondary)
                         .multilineTextAlignment(.center)
@@ -58,8 +58,24 @@ struct AboutView: View {
                     copyrightCard
                 }
 
-                // Contact Section
+                // Contact & Suggestions
                 VStack(spacing: 12) {
+                    Text("Contact & Suggestions")
+                        .font(Theme.headingFont)
+                        .foregroundColor(Theme.primaryColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    HStack(spacing: 8) {
+                        Image(systemName: "envelope")
+                            .foregroundColor(Theme.primaryColor)
+                        Text("tanveer.iqbal92@gmail.com")
+                            .font(Theme.bodyFont)
+                            .foregroundColor(Theme.textColor)
+                            .textSelection(.enabled)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 4)
+
                     Button(action: {
                         if let url = URL(string: "mailto:tanveer.iqbal92@gmail.com") {
                             openURL(url)
@@ -68,7 +84,7 @@ struct AboutView: View {
                         HStack {
                             Image(systemName: "envelope.fill")
                                 .font(.system(size: 18))
-                            Text("Contact: tanveer.iqbal92@gmail.com")
+                            Text("tanveer.iqbal92@gmail.com")
                                 .font(Theme.bodyFont)
                         }
                         .foregroundColor(.white)
@@ -100,10 +116,10 @@ struct AboutView: View {
             iconColor: Theme.accentAmber,
             title: "Features"
         ) {
-            FeatureRow(icon: "text.magnifyingglass", text: "Detailed grammatical breakdowns of Quranic verses")
-            FeatureRow(icon: "character.book.closed", text: "Morphological word analysis with roots and forms")
+            FeatureRow(icon: "text.magnifyingglass", text: "E'arab Analysis: Detailed grammatical breakdown of Quranic verses with English and Urdu translations")
+            FeatureRow(icon: "character.book.closed", text: "Sarf Analysis: Morphological analysis of Arabic words including root derivation and grammatical forms")
             FeatureRow(icon: Theme.isIPad ? "ipad" : "iphone", text: "Optimized for iPhone & iPad")
-            FeatureRow(icon: "lock.shield.fill", text: "Runs entirely on your device - no data transmission")
+            FeatureRow(icon: "lock.shield.fill", text: "Privacy First: Pure client-side application with zero data collection")
         }
     }
 
@@ -113,9 +129,16 @@ struct AboutView: View {
             iconColor: Theme.primaryColor,
             title: "Data Sources"
         ) {
-            DataSourceRow(name: "Surah Quran", description: "Grammatical analysis of Quranic verses")
-            DataSourceRow(name: "Quran API", description: "English and Urdu translations")
-            DataSourceRow(name: "AraTools", description: "Morphological analysis with roots and forms")
+            Text("This application fetches data from the following trusted sources:")
+                .font(Theme.smallFont)
+                .foregroundColor(Theme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            DataSourceRow(name: "E'arab (Grammatical Analysis)", description: "")
+            DataSourceRow(name: "Surah Quran - surahquran.com", description: "Provides detailed Arabic grammatical analysis (E'arab) for Quranic verses")
+            DataSourceRow(name: "Quran API - quranapi.pages.dev", description: "Supplies English and Urdu translations of Quranic verses")
+            DataSourceRow(name: "Sarf (Morphology Analysis)", description: "")
+            DataSourceRow(name: "AraTools - aratools.com", description: "Provides Arabic morphological analysis including root, form, and grammatical details")
         }
     }
 
@@ -125,12 +148,12 @@ struct AboutView: View {
             iconColor: Theme.successColor,
             title: "Privacy & Data"
         ) {
-            Text("This application runs entirely on your device and does not collect, store, or transmit any personal data.")
+            Text("This application runs on your device and does not collect, store, or transmit any personal data. All requests are made directly to third-party APIs from your device.")
                 .font(Theme.bodyFont)
                 .foregroundColor(Theme.textColor)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Text("Please review third-party privacy policies for their data handling practices.")
+            Text("Please refer to the privacy policies of the source websites for information about how they handle requests.")
                 .font(Theme.smallFont)
                 .foregroundColor(Theme.textSecondary)
                 .padding(.top, 8)
@@ -143,7 +166,7 @@ struct AboutView: View {
             iconColor: Theme.accentColor,
             title: "Disclaimer"
         ) {
-            Text("This tool helps students study Arabic grammar using Quranic verses. Content originates from third-party sources, with no ownership claims over religious texts or grammatical materials.")
+            Text("This is an educational web application designed to help students learn Arabic grammar through Quranic text analysis. All content is fetched from third-party sources and we do not claim ownership of any religious texts or grammatical analyses.")
                 .font(Theme.bodyFont)
                 .foregroundColor(Theme.textColor)
                 .fixedSize(horizontal: false, vertical: true)
@@ -154,9 +177,9 @@ struct AboutView: View {
         SectionCard(
             icon: "c.circle.fill",
             iconColor: Theme.textSecondary,
-            title: "Copyright"
+            title: "Copyright & Attribution"
         ) {
-            Text("Rights remain with original sources. This application functions as an educational interface without claiming content ownership.")
+            Text("All rights reserved to original sources. This application serves as an educational interface and does not claim ownership of any content provided by the third-party sources mentioned above.")
                 .font(Theme.bodyFont)
                 .foregroundColor(Theme.textColor)
                 .fixedSize(horizontal: false, vertical: true)

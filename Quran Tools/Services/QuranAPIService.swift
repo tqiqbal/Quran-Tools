@@ -9,103 +9,45 @@ import Foundation
 
 class QuranAPIService {
     static let shared = QuranAPIService()
+    private var surahCache: [Int: OfflineSurahFile] = [:]
 
     private init() {}
 
     // MARK: - Fetch Surahs
     func fetchSurahs() async throws -> [Surah] {
-        let cacheKey = "cached_surahs_data"
-        
-        // Check cache first
-        if let cachedData = UserDefaults.standard.data(forKey: cacheKey) {
-            if let response = try? JSONDecoder().decode(SurahListResponse.self, from: cachedData) {
-                return response.data
-            }
-        }
-        
-        // Fetch from network if not cached
-        let url = URL(string: "https://api.alquran.cloud/v1/surah")!
-
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        // Cache the response data
-        UserDefaults.standard.set(data, forKey: cacheKey)
-        
-        let response = try JSONDecoder().decode(SurahListResponse.self, from: data)
-        return response.data
+        let index = try loadSurahIndex()
+        return index.data.sorted { $0.number < $1.number }
     }
 
     // MARK: - Fetch Translation
     func fetchTranslation(surah: Int, ayah: Int) async throws -> AyahResponse {
-        // Using quranapi.pages.dev as per website
-        let urlString = "https://quranapi.pages.dev/api/\(surah)/\(ayah).json"
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
+        let surahData = try loadSurahFile(surah)
+        guard let ayahData = surahData.ayahs.first(where: { $0.ayahNo == ayah }) else {
+            throw OfflineDataError.ayahNotFound(surah: surah, ayah: ayah)
         }
-
-        let (data, _) = try await URLSession.shared.data(from: url)
-
-        // Parse the JSON manually since the structure might vary
-        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-
-        let arabic = json?["arabic1"] as? String ?? ""
-        let englishData = json?["english"] as? [String: Any]
-        let urduData = json?["urdu"] as? [String: Any]
-
-        let english = englishData?["text"] as? String ?? ""
-        let urdu = urduData?["text"] as? String ?? ""
 
         return AyahResponse(
             surahNumber: surah,
-            surahName: "",
+            surahName: surahData.surahNameArabic,
             ayahNumber: ayah,
-            arabic: arabic,
-            english: english,
-            urdu: urdu
+            arabic: ayahData.arabic,
+            english: ayahData.english,
+            urdu: ayahData.urdu
         )
     }
 
     // MARK: - Fetch E'arab Content
     func fetchEarabContent(surah: Int, ayah: Int) async throws -> String {
-        let targetURL = "https://surahquran.com/quran-search/e3rab-aya-\(ayah)-sora-\(surah).html"
-
-        // Try multiple CORS proxies as fallback
-        let proxies = [
-            "https://api.allorigins.win/get?url=",
-            "https://corsproxy.io/?",
-            "https://thingproxy.freeboard.io/fetch/",
-            "https://api.codetabs.com/v1/proxy?quest="
-        ]
-
-        for (index, proxy) in proxies.enumerated() {
-            do {
-                let proxyURL = proxy + targetURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-                guard let url = URL(string: proxyURL) else { continue }
-
-                var request = URLRequest(url: url, timeoutInterval: 10)
-                request.httpMethod = "GET"
-
-                let (data, _) = try await URLSession.shared.data(for: request)
-
-                // First proxy returns JSON with contents field
-                if index == 0 {
-                    if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                       let contents = json["contents"] as? String {
-                        return contents
-                    }
-                } else {
-                    // Other proxies return raw HTML
-                    if let html = String(data: data, encoding: .utf8) {
-                        return html
-                    }
-                }
-            } catch {
-                // Try next proxy
-                continue
-            }
+        let surahData = try loadSurahFile(surah)
+        guard let ayahData = surahData.ayahs.first(where: { $0.ayahNo == ayah }) else {
+            throw OfflineDataError.ayahNotFound(surah: surah, ayah: ayah)
         }
 
-        throw URLError(.cannotFindHost)
+        guard let earab = ayahData.earab else {
+            throw OfflineDataError.earabNotFound(surah: surah, ayah: ayah)
+        }
+
+        return ([earab.titleHTML] + earab.cardsHTML).joined(separator: "\n")
     }
 
     // MARK: - Fetch Morphology
@@ -120,5 +62,103 @@ class QuranAPIService {
         let (data, _) = try await URLSession.shared.data(from: url)
         let response = try JSONDecoder().decode(MorphologyResponse.self, from: data)
         return response.words
+    }
+
+    private func loadSurahFile(_ surahNumber: Int) throws -> OfflineSurahFile {
+        if let cached = surahCache[surahNumber] {
+            return cached
+        }
+
+        let file = try loadJSON(
+            filename: "surah-\(surahNumber)",
+            subdirectory: "data",
+            as: OfflineSurahFile.self
+        )
+        surahCache[surahNumber] = file
+        return file
+    }
+
+    private func loadJSON<T: Decodable>(
+        filename: String,
+        subdirectory: String,
+        as type: T.Type
+    ) throws -> T {
+        let candidates: [URL?] = [
+            Bundle.main.url(forResource: filename, withExtension: "json", subdirectory: subdirectory),
+            Bundle.main.url(forResource: filename, withExtension: "json")
+        ]
+
+        guard let url = candidates.compactMap({ $0 }).first else {
+            throw OfflineDataError.fileNotFound(filename: "\(subdirectory)/\(filename).json or \(filename).json")
+        }
+
+        let data = try Data(contentsOf: url)
+        return try JSONDecoder().decode(type, from: data)
+    }
+
+    private func loadSurahIndex() throws -> OfflineSurahIndex {
+        if let index = try? loadJSON(
+            filename: "surahs-index",
+            subdirectory: "data",
+            as: OfflineSurahIndex.self
+        ) {
+            return index
+        }
+
+        if let index = try? loadJSON(
+            filename: "surah-index",
+            subdirectory: "data",
+            as: OfflineSurahIndex.self
+        ) {
+            return index
+        }
+
+        throw OfflineDataError.fileNotFound(filename: "data/surahs-index.json (or data/surah-index.json)")
+    }
+}
+
+private enum OfflineDataError: LocalizedError {
+    case fileNotFound(filename: String)
+    case ayahNotFound(surah: Int, ayah: Int)
+    case earabNotFound(surah: Int, ayah: Int)
+
+    var errorDescription: String? {
+        switch self {
+        case let .fileNotFound(filename):
+            return "Offline data file is missing: \(filename)"
+        case let .ayahNotFound(surah, ayah):
+            return "Ayah \(ayah) was not found in Surah \(surah) offline data."
+        case let .earabNotFound(surah, ayah):
+            return "E'arab content is not available offline for Surah \(surah), Ayah \(ayah)."
+        }
+    }
+}
+
+private struct OfflineSurahIndex: Decodable {
+    let data: [Surah]
+}
+
+private struct OfflineSurahFile: Decodable {
+    let surahNo: Int
+    let surahName: String
+    let surahNameArabic: String
+    let ayahs: [OfflineAyah]
+}
+
+private struct OfflineAyah: Decodable {
+    let ayahNo: Int
+    let arabic: String
+    let english: String
+    let urdu: String
+    let earab: OfflineEarab?
+}
+
+private struct OfflineEarab: Decodable {
+    let titleHTML: String
+    let cardsHTML: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case titleHTML = "title_html"
+        case cardsHTML = "cards_html"
     }
 }

@@ -206,6 +206,8 @@ struct EarabView: View {
     // MARK: - Results Section
     private var resultsSection: some View {
         VStack(spacing: 20) {
+            attributionInfoView
+
             // Navigation Buttons
             navigationButtons
 
@@ -217,6 +219,32 @@ struct EarabView: View {
             // Source Link
 //            sourceLinkButton
         }
+    }
+
+    private var attributionInfoView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Image(systemName: "wifi.slash")
+                    .foregroundColor(Theme.successColor)
+                Text("Offline Mode")
+                    .font(Theme.bodyFont)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Theme.textColor)
+            }
+
+            Text("Showing bundled offline content. Original E'arab source: SurahQuran.com. Rights remain with original content owners.")
+                .font(Theme.smallFont)
+                .foregroundColor(Theme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white)
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Theme.successColor.opacity(0.25), lineWidth: 1)
+        )
     }
 
     // MARK: - Navigation Buttons
